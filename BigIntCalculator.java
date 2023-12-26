@@ -1,4 +1,4 @@
-public class Kata {
+public class BigIntCalculator {
     public static String add(String a, String b) {  // fait la somme de deux nombre trés grand pas le droit à BigInt
 
 
@@ -36,20 +36,19 @@ public class Kata {
             
             
         }
-        System.out.println(a + " + "+ b+" = "+res);
-        int index = 0;
-        while(a.charAt(index)=='0'){
-          res = res.substring(0,1);
-          index ++ ;
-        }
         
-        if (reste > 0) {return String.valueOf(reste) + res;}
-        else {return res;}
+        if (reste > 0) {res = String.valueOf(reste) + res;}
+        
+        res .replaceFirst("^0+","");     // on enléve les zéros au début du avant le nombre
+
+        System.out.println(a + " + "+ b +" = "+res);
+
+        return res;
     }
     
     public static void main(String[] args){
         try{
-        System.out.println (add("100000", "101"));
+        add("1893834934934930", "1734834734939934801");
         }
         catch(Exception e){
             System.out.println("not working : "+ e);
